@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int main() {
+    int n,a,sum = 0;
+    scanf("%d", &n);
+    int N = n; // Save the original value for output
+
+    while (n != 0)
+    {
+        a = n % 10;  // get last digit
+        sum += a;    // add to sum
+        n /= 10;         // remove last digit
+    }
+
+    printf("Sum of digits in %d = %d\n", N, sum);
+    return 0;
+}
