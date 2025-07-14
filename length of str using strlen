@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[100];
+    int length;
+
+    // Input the string
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+
+    // Remove trailing newline if present
+    if (str[strlen(str) - 1] == '\n') {
+        str[strlen(str) - 1] = '\0';
+    }
+
+    // Use strlen to find the length
+    length = strlen(str);
+
+    // Output the length
+    printf("Length of the string: %d\n", length);
+
+    return 0;
+}
