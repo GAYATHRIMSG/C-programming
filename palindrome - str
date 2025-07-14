@@ -1,30 +1,38 @@
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
 int main() {
-    char str[100], temp;
-    int i, len;
+    char str[100];
+    int i, len, isPalindrome = 1;
 
     // Input the string
     printf("Enter a string: ");
     fgets(str, sizeof(str), stdin);
 
-    // Remove newline character if present
+    // Remove newline character from input if present
     len = strlen(str);
     if (str[len - 1] == '\n') {
         str[len - 1] = '\0';
         len--;
     }
 
-    // Reverse the string in-place
+    // Check if the string is a palindrome
     for (i = 0; i < len / 2; i++) {
-        temp = str[i];
-        str[i] = str[len - 1 - i];
-        str[len - 1 - i] = temp;
+        char left = tolower(str[i]);
+        char right = tolower(str[len - 1 - i]);
+
+        if (left != right) {
+            isPalindrome = 0;
+            break;
+        }
     }
 
-    // Output the reversed string
-    printf("Reversed string: %s\n", str);
+    // Output result
+    if (isPalindrome)
+        printf("The string is a palindrome.\n");
+    else
+        printf("The string is not a palindrome.\n");
 
     return 0;
 }
